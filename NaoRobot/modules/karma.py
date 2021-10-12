@@ -3,6 +3,7 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 
+from NaoRobot import arq
 from NaoRobot import pbot as app, BOT_ID
 from NaoRobot.utils.errors import capture_err
 from NaoRobot.utils.permissions import adminsOnly
