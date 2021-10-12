@@ -28,7 +28,7 @@ regex
 bleach
 git+https://github.com/starry69/python-markdown2.git
 wikipedia
-telethon==1.16.4
+telethon
 telegraph
 heroku3
 spamwatch
@@ -44,7 +44,7 @@ youtube_search_python
 youtube_search
 asyncio
 dateparser==1.0.0
-pymongo==3.11.0
+pymongo
 dnspython
 secureme
 apscheduler
