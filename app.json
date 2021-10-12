@@ -1,6 +1,7 @@
 {
       "name": "NaoRobot",
       "description": "Telegram group management bot.",
+      "logo": "https://telegra.ph/file/306ba2a9615e5a7b7abc2.jpg"
       "keywords": [
          "telegram",
          "anime",
@@ -8,7 +9,7 @@
          "manager",
          "nao"
       ],   
-   "repository": "https://t.me/itsMeLegend",
+   "repository": "https://github.com/KennedyProject/NaoRobot",
    "addons": [
       {
          "options": {
@@ -17,6 +18,14 @@
          "plan": "heroku-postgresql"
       }
    ],
+   "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    }
+  ],
    "env": {
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
@@ -173,15 +182,15 @@
       "DONATION_LINK": {
          "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
          "required": false,
-         "value": "https://www.paypal.me/PaulSonOfLars"
+         "value": "https://t.me/KennedyProject"
       },
       "DEL_CMDS": {
          "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
          "value": "True"
       },
-      "AI_API_KEY": {
+      "ARQ_API_KEY": {
       "description": "Make your bot talk using Intellivoid's chatbot API, get your key from https://coffeehouse.intellivoid.net/",
-         "required": false,
+         "required": true,
          "value": ""
    },      
       "BAN_STICKER": {
