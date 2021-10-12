@@ -1,23 +1,23 @@
-import re
+# AI Chat (C) 2020-2021 by @InukaAsith
 
 import emoji
-
-IBM_WATSON_CRED_URL = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/bd6b59ba-3134-4dd4-aff2-49a79641ea15"
-IBM_WATSON_CRED_PASSWORD = "UQ1MtTzZhEsMGK094klnfa-7y_4MCpJY1yhd52MXOo3Y"
-url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 import re
-
 import aiohttp
-from google_trans_new import google_translator
+from googletrans import Translator as google_translator
 from pyrogram import filters
-
-from NaoRobot import BOT_ID
+from aiohttp import ClientSession
+from NaoRobot import BOT_ID, pbot, arq
 from NaoRobot.helper_extra.aichat import add_chat, get_session, remove_chat
 from NaoRobot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from NaoRobot import pbot as Nao
+
+url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 
 translator = google_translator()
-import requests
+
+
+async def lunaQuery(query: str, user_id: int):
+    luna = await arq.luna(query, user_id)
+    return luna.result
 
 
 def extract_emojis(s):
@@ -39,19 +39,16 @@ async def fetch(url):
         return
 
 
-nao_chats = []
+ewe_chats = []
 en_chats = []
 
-@Nao.on_message(
-    filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private
-)
+
+@pbot.on_message(filters.command("chatbot") & ~filters.edited & ~filters.bot & ~filters.private)
 @admins_only
 async def hmm(_, message):
-    global nao_chats
+    global ewe_chats
     if len(message.command) != 2:
-        await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
-        )
+        await message.reply_text("I only recognize `/chatbot on` and /chatbot `off only`")
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
     chat_id = message.chat.id
@@ -59,21 +56,17 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("Nao Tomori AI Already Activated In This Chat")
+            await lel.edit("NaoRobot AI Already Activated In This Chat")
             return
-        await lel.edit(
-            f"Nao Tomori AI Successfully Added For Users In The Chat {message.chat.id}"
-        )
+        await lel.edit(f"NaoRobot AI Successfully Added For Users In The Chat {message.chat.id}")
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("Nao Tomori AI Was Not Activated In This Chat")
+            await lel.edit("NaoRobot AI Was Not Activated In This Chat")
             return
-        await lel.edit(
-            f"Nao Tomori AI Successfully Deactivated For Users In The Chat {message.chat.id}"
-        )
+        await lel.edit(f"NaoRobot AI Successfully Deactivated For Users In The Chat {message.chat.id}")
 
     elif status == "EN" or status == "en" or status == "english":
         if not chat_id in en_chats:
@@ -83,12 +76,10 @@ async def hmm(_, message):
         await message.reply_text("AI Chat Is Already Disabled.")
         message.continue_propagation()
     else:
-        await message.reply_text(
-            "I only recognize `/chatbot on` and /chatbot `off only`"
-        )
+        await message.reply_text("I only recognize `/chatbot on` and /chatbot `off only`")
 
 
-@Nao.on_message(
+@pbot.on_message(
     filters.text
     & filters.reply
     & ~filters.bot
@@ -116,21 +107,15 @@ async def hmm(client, message):
         test = msg
         test = test.replace("nao", "Aco")
         test = test.replace("Nao", "Aco")
-        URL = "https://api.affiliateplus.xyz/api/chatbot?message=hi&botname=@naoex_bot&ownername=@xgothboi"
+        response = await lunaQuery(
+            test, message.from_user.id if message.from_user else 0
+        )
+        response = response.replace("Aco", "Nao")
+        response = response.replace("aco", "Nao")
 
+        pro = response
         try:
-            r = requests.request("GET", url=URL)
-        except:
-            return
-
-        try:
-            result = r.json()
-        except:
-            return
-
-        pro = result["message"]
-        try:
-            await Nao.send_chat_action(message.chat.id, "typing")
+            await pbot.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
@@ -166,45 +151,41 @@ async def hmm(client, message):
             # print (rm)
         try:
             lan = translator.detect(rm)
+            lan = lan.lang
         except:
             return
         test = rm
         if not "en" in lan and not lan == "":
             try:
-                test = translator.translate(test, lang_tgt="en")
+                test = translator.translate(test, dest="en")
+                test = test.text
             except:
                 return
-        # test = emoji.demojize(test.strip())
 
-        # Kang with the credits bitches @InukaASiTH
-        test = test.replace("nao", "Aco")
-        test = test.replace("nao", "Aco")
-        URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@naoex_bot&ownername=@xgothboi"
-        try:
-            r = requests.request("GET", url=URL)
-        except:
-            return
-
-        try:
-            result = r.json()
-        except:
-            return
-        pro = result["message"]
+        test = test.replace("Nao", "Aco")
+        test = test.replace("Nao", "Aco")
+        response = await lunaQuery(
+            test, message.from_user.id if message.from_user else 0
+        )
+        response = response.replace("Aco", "Nao")
+        response = response.replace("aco", "Nao")
+        response = response.replace("Luna", "Nao")
+        response = response.replace("luna", "Nao")
+        pro = response
         if not "en" in lan and not lan == "":
             try:
-                pro = translator.translate(pro, lang_tgt=lan[0])
+                pro = translator.translate(pro, dest=lan)
+                pro = pro.text
             except:
                 return
         try:
-            await Nao.send_chat_action(message.chat.id, "typing")
+            await pbot.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError:
             return
 
 
-@Nao.on_message(
-    filters.text & filters.private & ~filters.edited & filters.reply & ~filters.bot
-)
+@pbot.on_message(filters.text & filters.private & ~filters.edited & filters.reply & ~filters.bot)
 async def inuka(client, message):
     msg = message.text
     if msg.startswith("/") or msg.startswith("@"):
@@ -236,46 +217,39 @@ async def inuka(client, message):
         rm = re.sub(r"\[([^]]+)]\(\s*([^)]+)\s*\)", r"", msg)
     else:
         rm = msg
-        # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
-    # test = emoji.demojize(test.strip())
+    test = test.replace("Nao", "Aco")
+    test = test.replace("Nao", "Aco")
 
-    # Kang with the credits bitches @InukaASiTH
-    test = test.replace("nao", "Aco")
-    test = test.replace("nao", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@naoex_bot&ownername=@xgothboi"
-    try:
-        r = requests.request("GET", url=URL)
-    except:
-        return
+    response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
+    response = response.replace("Aco", "Nao")
+    response = response.replace("aco", "Nao")
 
-    try:
-        result = r.json()
-    except:
-        return
-
-    pro = result["message"]
+    pro = response
     if not "en" in lan and not lan == "":
-        pro = translator.translate(pro, lang_tgt=lan[0])
+        pro = translator.translate(pro, dest=lan)
+        pro = pro.text
     try:
-        await Nao.send_chat_action(message.chat.id, "typing")
+        await pbot.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
 
 
-@Nao.on_message(
-    filters.regex("nao|Nao|Bot|bot|Robot")
+@pbot.on_message(
+    filters.regex("Nao|nao|robot|sena|NAO")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -314,52 +288,44 @@ async def inuka(client, message):
         rm = re.sub(r"\[([^]]+)]\(\s*([^)]+)\s*\)", r"", msg)
     else:
         rm = msg
-        # print (rm)
     try:
         lan = translator.detect(rm)
+        lan = lan.lang
     except:
         return
     test = rm
     if not "en" in lan and not lan == "":
         try:
-            test = translator.translate(test, lang_tgt="en")
+            test = translator.translate(test, dest="en")
+            test = test.text
         except:
             return
 
-    # test = emoji.demojize(test.strip())
+    test = test.replace("Nao", "Aco")
+    test = test.replace("Nao", "Aco")
+    response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
+    response = response.replace("Aco", "Nao")
+    response = response.replace("aco", "Nao")
 
-    # Kang with the credits bitches @InukaASiTH
-    test = test.replace("nao", "Aco")
-    test = test.replace("nao", "Aco")
-    URL = f"https://api.affiliateplus.xyz/api/chatbot?message={test}&botname=@naorx_bot&ownername=@xgothboi"
-    try:
-        r = requests.request("GET", url=URL)
-    except:
-        return
-
-    try:
-        result = r.json()
-    except:
-        return
-    pro = result["message"]
+    pro = response
     if not "en" in lan and not lan == "":
         try:
-            pro = translator.translate(pro, lang_tgt=lan[0])
+            pro = translator.translate(pro, dest=lan)
+            pro = pro.text
         except Exception:
             return
     try:
-        await Nao.send_chat_action(message.chat.id, "typing")
+        await pbot.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError:
         return
 
 
 __help__ = """
-<b> Chatbot </b>
-NaoRobot AI 3.0 IS THE ONLY AI SYSTEM WHICH CAN DETECT & REPLY UPTO 200 LANGUAGES
- - /chatbot [ON/OFF]: Enables and disables AI Chat mode (EXCLUSIVE)
- - /chatbot EN : Enables English only chatbot
- 
+*──「 Help for the Chatbot module 」──*
+• NaoRobot AI is the only ai system which can detect & reply upto 200 language's
+✪ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
+✪ /chatbot EN : Enables English only chatbot.
 """
 
-__mod_name__ = "chatbot"
+__mod_name__ = "Chatbot"
