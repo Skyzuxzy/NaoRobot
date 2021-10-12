@@ -74,7 +74,9 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-[✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴏʟʟᴀ ɪ'ᴍ ᴛʜᴇ ɴᴇxᴛ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴏꜰ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ​!   
+[✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴇʟʟᴏ  ᴍʏ ɴᴀᴍᴇ ɪs ɴᴀᴏ ᴛᴏᴍᴏʀɪ
+ɪ'ᴍ ᴀ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇ ʙᴏᴛ ꜰᴏʀ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsɪʟʏ!
+ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ @xgothboi ❤️​!   
 """
 
 buttons = [
@@ -212,11 +214,20 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime
-            ),
-            parse_mode=ParseMode.HTML,
-        )
+            f"<b>I'm started already!</b>\n<b>Haven't slept since:</b> <code>{uptime}</code>",
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                {
+                                    InlineKeyboardButton(
+                                        text="sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​",
+                                        url="https://t.me/kenbotsupport",
+                                    )
+                                }
+                            ]
+                        ),
+                        parse_mode=ParseMode.HTML,
+                        disable_web_page_preview=True
+                    )
 
 
 def error_handler(update, context):
@@ -347,13 +358,13 @@ def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
+            text=""" 💡 I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.
+                 \n• I can restrict users.
+                 \n• I can greet users with customizable welcome messages and even set a group's rules.
+                 \n• I have an advanced anti-flood system.
+                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n• I check for admins' permissions before executing any command and more stuffs
                  \n\n_naorobot's licensed under the GNU General Public License v3.0_
                  \n\nIf you have any question about NaoRobot, let us know at .""",
             parse_mode=ParseMode.MARKDOWN,
