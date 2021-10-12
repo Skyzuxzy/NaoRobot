@@ -74,38 +74,35 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello*  My name is *Nao Tomori* [✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg)
-I'm A Anime Theme Bot For Management Your Group Easily!
-Maintained By [Muhammad Sena](https://t.me/xgothboi) ❤️
+[✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴏʟʟᴀ ɪ'ᴍ ᴛʜᴇ ɴᴇxᴛ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴏꜰ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ​!   
 """
+
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/naoex_bot?startgroup=true"
+            text="➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/naoex_bot?startgroup=true"),
+    ],
+    [
+        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="nao_"),
+        InlineKeyboardButton(
+            text="ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
         ),
     ],
     [
-        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ​", callback_data="nao_"),
-        InlineKeyboardButton(
-            text="sᴜᴘᴘᴏʀᴛ​", url="https://t.me/kenbotsupport"
-        ),
-    ],
-    [
-        InlineKeyboardButton(
-            text="❓ ʜᴇʟᴘ &​ ᴄᴏᴍᴍᴀɴᴅ", callback_data="help_back"
-        ),
+        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ❔", callback_data="help_back"),
     ],
 ]
 
 
 HELP_STRINGS = """
-*Click on the buttons to get help specific modules, If you need any help you can ask on my support group*"""
+ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ."""
 
+nao_IMG = "https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg"
 
-NAO_IMG = "https://telegra.ph/file/87c6bcbeb6f0f2302830a.png"
-
-DONATE_STRING = """I'm Free For Everyone! \
- You can use me as free, and if you have a problem you can contact me in support group ."""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+ You can support the project by contacting @xgothboi \
+ Supporting isnt always financial! \
+ Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -124,6 +121,8 @@ for module_name in ALL_MODULES:
 
     if imported_module.__mod_name__.lower() not in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
+    else:
+        raise Exception("Can't have two modules with the same name! Please change one")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -164,6 +163,7 @@ def send_help(chat_id, text, keyboard=None):
     )
 
 
+@run_async
 def test(update: Update, context: CallbackContext):
     # pprint(eval(str(update)))
     # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
@@ -171,6 +171,7 @@ def test(update: Update, context: CallbackContext):
     print(update.effective_message)
 
 
+@run_async
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -186,13 +187,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    text="🔙 BACK", callback_data="help_back"
-                                )
-                            ]
-                        ]
+                        [[InlineKeyboardButton(text="🔙 BACK", callback_data="help_back")]]
                     ),
                 )
 
@@ -217,20 +212,11 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"<b>I'm started already!</b>\n<b>Haven't slept since:</b> <code>{uptime}</code>",
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                {
-                                    InlineKeyboardButton(
-                                        text="sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​",
-                                        url="https://t.me/kenbotsupport",
-                                    )
-                                }
-                            ]
-                        ),
-                        parse_mode=ParseMode.HTML,
-                        disable_web_page_preview=True
-                    )
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime
+            ),
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
@@ -291,6 +277,7 @@ def error_callback(update: Update, context: CallbackContext):
         # handle all other telegram related errors
 
 
+@run_async
 def help_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -314,7 +301,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
 
@@ -355,66 +342,72 @@ def help_button(update, context):
         pass
 
 
+@run_async
 def nao_about_callback(update, context):
     query = update.callback_query
     if query.data == "nao_":
         query.message.edit_text(
-            text=""" ❗ I'm *Nao Tomori*, If you have any question about *Nao Tomori*, let us know at On Support Groups. If you wanna create bot yourself, you can tap on source code button on bellow. """,
+            text=""" ℹ️ I'm *NaoRobot*, a powerful group management bot built to help you manage your group easily.
+                 \n❍ I can restrict users.
+                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
+                 \n❍ I have an advanced anti-flood system.
+                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n❍ I check for admins' permissions before executing any command and more stuffs
+                 \n\n_naorobot's licensed under the GNU General Public License v3.0_
+                 \n\nIf you have any question about NaoRobot, let us know at .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                     [
-                         InlineKeyboardButton(
-                             text="ᴍᴏʀᴇ ɪɴꜰᴏ​",
-                             callback_data="source_"),
-                         InlineKeyboardButton(
-                             text="ᴜᴘᴅᴀᴛᴇs​",
-                             url="https://t.me/KennedyProject"
-                        ),
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ​​​", 
-                             url="https://github.com/KennedyProject/NaoRobot"
-                        ),
-                     ],
-                     [
-                         InlineKeyboardButton(text="🔙 Back", callback_data="nao_back"),
-                     ],
+                 [
+                    InlineKeyboardButton(text="Source", url="https://github.com/KennedyProject/NaoRobot"
+                    ),
+                    InlineKeyboardButton(text="Dev", url="https://t.mr/xgothboi")
+                 ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
+                 ]
                 ]
             ),
-       )
-
+        )
     elif query.data == "nao_back":
         query.message.edit_text(
-            PM_START_TEXT,
-            reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN,
-            timeout=60,
-            disable_web_page_preview=False,
-       )
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
+
+@run_async
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" ❓ I'm *Nao Tomori*, a powerful group management bot built to help you manage your group easily.
-                 \n• I can restrict users.
-                 \n• I can greet users with customizable welcome messages and even set a group's rules.
-                 \n• I have an advanced anti-flood system.
-                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n• I check for admins' permissions before executing any command and more stuffs.
-                 \n\n_Nao's licensed under the GNU General Public License v3.0_.""",
+            text=""" Hi I'm *NaoRobot*
+                 \nHere is the [Source Code](https://github.com/KennedyProject/NaoRobot) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="🔙 Back", callback_data="nao_")]]
+                [
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="source_back")
+                 ]
+                ]
             ),
         )
+    elif query.data == "source_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
-
+@run_async
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
@@ -439,8 +432,7 @@ def get_help(update: Update, context: CallbackContext):
                 ),
             )
             return
-
-       update.effective_message.reply_text(
+        update.effective_message.reply_text(
             "Contact me in PM to get the list of possible commands.",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -448,7 +440,7 @@ def get_help(update: Update, context: CallbackContext):
                         InlineKeyboardButton(
                             text="Help",
                             url="t.me/{}?start=help".format(context.bot.username),
-                        ),
+                        )
                     ]
                 ]
             ),
@@ -467,7 +459,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="🔙 Back", callback_data="help_back")]]
             ),
         )
 
@@ -516,6 +508,7 @@ def send_settings(chat_id, user_id, user=False):
             )
 
 
+@run_async
 def settings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
@@ -599,6 +592,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
 
+@run_async
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -630,6 +624,7 @@ def get_settings(update: Update, context: CallbackContext):
         send_settings(chat.id, user.id, True)
 
 
+@run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
@@ -639,12 +634,13 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 1606221784:
+        if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
-                "I'm free for everyone ❤️ If you wanna make me smile, just join"
-                "[My Channel]({})".format(DONATION_LINK),
+                "You can also donate to the person currently running me "
+                "[here]({})".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
+
     else:
         try:
             bot.send_message(
@@ -694,30 +690,20 @@ def main():
         except BadRequest as e:
             LOGGER.warning(e.message)
 
-    test_handler = CommandHandler("test", test, run_async=True)
-    start_handler = CommandHandler("start", start, run_async=True)
+    test_handler = CommandHandler("test", test)
+    start_handler = CommandHandler("start", start)
 
-    help_handler = CommandHandler("help", get_help, run_async=True)
-    help_callback_handler = CallbackQueryHandler(
-        help_button, pattern=r"help_.*", run_async=True
-    )
+    help_handler = CommandHandler("help", get_help)
+    help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
 
-    settings_handler = CommandHandler("settings", get_settings, run_async=True)
-    settings_callback_handler = CallbackQueryHandler(
-        settings_button, pattern=r"stngs_", run_async=True
-    )
+    settings_handler = CommandHandler("settings", get_settings)
+    settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(
-        nao_about_callback, pattern=r"nao_", run_async=True
-    )
-    source_callback_handler = CallbackQueryHandler(
-        Source_about_callback, pattern=r"source_", run_async=True
-    )
+    about_callback_handler = CallbackQueryHandler(nao_about_callback, pattern=r"nao_")
+    source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
 
-    donate_handler = CommandHandler("donate", donate, run_async=True)
-    migrate_handler = MessageHandler(
-        Filters.status_update.migrate, migrate_chats, run_async=True
-    )
+    donate_handler = CommandHandler("donate", donate)
+    migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     # dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
@@ -733,7 +719,7 @@ def main():
     dispatcher.add_error_handler(error_callback)
 
     if WEBHOOK:
-        LOGGER.info("[NaoRobot] Using webhooks.")
+        LOGGER.info("Using webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
@@ -743,7 +729,7 @@ def main():
 
     else:
         LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
+        updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
@@ -754,7 +740,7 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info("[NaoRobot] Successfully loaded modules: " + str(ALL_MODULES))
+    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
     pbot.start()
     main()
