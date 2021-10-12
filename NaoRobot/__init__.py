@@ -27,7 +27,7 @@ def get_user_list(__init__, key):
 
 
 # enable logging
-FORMAT = "[Kennedy] %(message)s"
+FORMAT = "[NaoRobot] %(message)s"
 logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
@@ -37,9 +37,8 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 LOGGER = logging.getLogger(__name__)
-LOGGER.info("Kennedy is starting. | An Kennedy Union Project. | Licensed under GPLv3.")
+LOGGER.info("NaoRobot is starting. | An NaoRobot Union Project. | Licensed under GPLv3.")
 LOGGER.info("Not affiliated to Shie Hashaikai or Villain in any way whatsoever.")
-LOGGER.info("Project maintained by: github.com/KennedyProject (t.me/@xgothboi)")
 
 # enable logging
 logging.basicConfig(
@@ -204,7 +203,6 @@ else:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 DRAGONS.add(OWNER_ID)
-DRAGONS.add(1805518906)
 DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1805518906)
 
