@@ -1,14 +1,15 @@
 {
       "name": "NaoRobot",
-      "description": "Telegram group management bot.",
+      "description": "Theme anime Telegram group management bot.",
+      "logo": "https://telegra.ph/file/84ab5c1a58b87f23054eb.jpg",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "nao"
+         "Nao"
       ],   
-   "repository": "https://t.me/kenbotsupport",
+   "repository": "https://github.com/KennedyProject/NaoRobot.git",
    "addons": [
       {
          "options": {
@@ -181,7 +182,7 @@
       "DONATION_LINK": {
          "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
          "required": false,
-         "value": "https://t.me/KennedyProject"
+         "value": "https://www.paypal.me/PaulSonOfLars"
       },
       "DEL_CMDS": {
          "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
@@ -189,13 +190,18 @@
       },
       "ARQ_API_KEY": {
       "description": "Make your bot talk using Intellivoid's chatbot API, get your key from https://coffeehouse.intellivoid.net/",
-         "required": true,
+         "required": false,
          "value": ""
-   },      
+      },      
       "BAN_STICKER": {
          "description": "ID of the sticker you want to use when banning people.",
          "required": false,
          "value": ""
+      },
+       "INFO_PIC": {
+         "description": "set True or False ",
+         "required": false,
+         "value": "True"
       },
       "WALL_API": {
          "description": "Required for wallpaper. Get your's from https://wall.alphacoders.com/",
