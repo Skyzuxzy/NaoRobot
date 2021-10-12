@@ -14,7 +14,7 @@ from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboard
 
 from NaoRobot import DRAGONS as SUDO_USERS
 from NaoRobot import pbot
-from NaoRobot.modules.sql_extended import forceSubscribe_sql as sql
+from NaoRobot.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 
