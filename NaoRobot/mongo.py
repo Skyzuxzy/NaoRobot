@@ -2,10 +2,10 @@ import asyncio
 import sys
 
 from motor import motor_asyncio
-from LaylaRobot import MONGO_DB_URI 
+from NaoRobot import MONGO_DB_URI 
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
-from LaylaRobot.conf import get_int_key, get_str_key
+from NaoRobot.conf import get_int_key, get_str_key
 
 
 MONGO_PORT = get_int_key("27017")
