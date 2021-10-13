@@ -9,11 +9,11 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineKeyboardButton,
 )
-from LaylaRobot import dispatcher
-from LaylaRobot import pbot as kp
+from NaoRobot import dispatcher
+from NaoRobot import pbot as kp
 from pyrogram import filters
 from pyrogram.types import Message
-from LaylaRobot.modules.disable import DisableAbleCommandHandler
+from NaoRobot.modules.disable import DisableAbleCommandHandler
 
 
 __help__ = """ 
