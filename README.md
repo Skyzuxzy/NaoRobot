@@ -5,6 +5,8 @@
 
 ## Found Me On Telegram As [Nao Tomori🌼](https://t.me/naoex_bot)
 
+[![Deploy](https://telegra.ph/file/306ba2a9615e5a7b7abc2.jpg)](https://heroku.com/deploy?template=https://github.com/Askarbot/NaoRobot.git)
+
 ## <p align="center">DEPLOY TO HEROKU</p>
 
 <p align="center"><a href="https://heroku.com/deploy?template=https://github.com/Askarbot/NaoRobot">
@@ -24,9 +26,6 @@ Now go to https://dashboard.heroku.com/apps/(app-name)/resources ( Replace (app-
 Turn on worker dyno (Don't worry It's free :D) & Webhook
 Now send the bot /start, If it doesn't respond go to https://dashboard.heroku.com/apps/(app-name)/settings and remove webhook and port.
 ```
-
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/KennedyProject/NaoRobot"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>  
-
 CREDITS
 ```
 ❤️ YoneRobot - noob-kittu
