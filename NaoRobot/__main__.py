@@ -82,7 +82,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/naoex_bot?startgroup=true"),
+            text="➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/skyzXrobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="nao_"),
@@ -102,7 +102,7 @@ HELP_STRINGS = """
 nao_IMG = "https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @xgothboi \
+ You can support the project by contacting @skyzuX \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -220,7 +220,7 @@ def start(update: Update, context: CallbackContext):
                                 {
                                     InlineKeyboardButton(
                                         text="sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​",
-                                        url="https://t.me/kenbotsupport",
+                                        url="https://t.me/skyzuXproject",
                                     )
                                 }
                             ]
@@ -372,9 +372,9 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Source", url="https://github.com/KennedyProject/NaoRobot"
+                    InlineKeyboardButton(text="Source", url="https://github.com/Askarbot/NaoRobot"
                     ),
-                    InlineKeyboardButton(text="Dev", url="https://t.mr/xgothboi")
+                    InlineKeyboardButton(text="Dev", url="https://t.mr/skyzuX")
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
