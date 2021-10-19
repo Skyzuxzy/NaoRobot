@@ -3,7 +3,7 @@
     <a href="https://github.com/KennedyProject/NaoRobot/stargazers"><img src="https://img.shields.io/github/stars/KennedyProject/NaoRobot?label=Stars&style=flat-square&logo=github&color=F10070" alt="Stars" /></a>
 </p>
 
-## Found Me On Telegram As [Nao Tomori🌼](https://t.me/naoex_bot)
+## Found Me On Telegram As [Nao Tomori🌼](https://t.me/skyzuXrobot)
 
 [![Deploy](https://telegra.ph/file/306ba2a9615e5a7b7abc2.jpg)](https://heroku.com/deploy?template=https://github.com/Askarbot/NaoRobot.git)
 
