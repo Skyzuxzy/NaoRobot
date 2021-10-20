@@ -220,7 +220,7 @@ def start(update: Update, context: CallbackContext):
                                 {
                                     InlineKeyboardButton(
                                         text="sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ​",
-                                        url="https://t.me/skyzuXproject",
+                                        url="https://t.me/skyzusupport",
                                     )
                                 }
                             ]
