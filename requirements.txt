@@ -22,7 +22,6 @@ aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
 googletrans==3.1.0a0
-PyDictionary==2.0.1
 google_trans_new
 jikanpy
 speedtest-cli
