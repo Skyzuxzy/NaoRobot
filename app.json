@@ -9,7 +9,7 @@
          "manager",
          "Nao"
       ],   
-   "repository": "https://github.com/KennedyProject/NaoRobot.git",
+   "repository": "https://github.com/Skyzu/NaoRobot.git",
    "addons": [
       {
          "options": {
