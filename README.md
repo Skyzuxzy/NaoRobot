@@ -34,5 +34,5 @@ CREDITS
 ❤️ DaisyX = Inuka
 ❤️ TheHamkerCat = WBB
 
-Developed By KennedyProject ! 
+Developed By KennedyProject !
 ```
