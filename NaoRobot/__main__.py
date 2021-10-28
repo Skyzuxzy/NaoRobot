@@ -12,6 +12,7 @@ from NaoRobot import (
     OWNER_ID,
     PORT,
     SUPPORT_CHAT,
+    BOT_USERNAME,
     TOKEN,
     URL,
     WEBHOOK,
