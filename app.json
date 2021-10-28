@@ -57,6 +57,11 @@
          "required": true,
          "value": ""
       },
+      "BOT_USERNAME": {
+         "description": "username of your bot with the @",
+         "required": true,
+         "value": ""
+      },
       "HEROKU_API_KEY": {
         "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
         "value": ""
