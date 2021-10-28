@@ -1,6 +1,6 @@
 <h1>Nao Tomori Robot</h1>
 <p align="center">
-    <a href="https://github.com/Askarbot/NaoRobot/stargazers"><img src="https://img.shields.io/github/stars/KennedyProject/NaoRobot?label=Stars&style=flat-square&logo=github&color=F10070" alt="Stars" /></a>
+    <a href="https://github.com/Skyzu/NaoRobot/stargazers"><img src="https://img.shields.io/github/stars/Skyzu/NaoRobot?label=Stars&style=flat-square&logo=github&color=F10070" alt="Stars" /></a>
 </p>
 
 ## Found Me On Telegram As [Nao Tomori🌼](https://t.me/skyzuXrobot)
