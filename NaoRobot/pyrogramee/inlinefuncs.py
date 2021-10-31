@@ -22,7 +22,7 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
 from search_engine_parser import GoogleSearch
 
 from NaoRobot import DEV_USERS
-from NaoRobot import EVENT_LOGS
+from NaoRobot import EVENT_LOGS, BOT_USERNAME
 from NaoRobot import pbot as app 
 from NaoRobot import arq
 from NaoRobot.utils.keyboard import ikb
@@ -35,9 +35,6 @@ from NaoRobot.utils.pastebin import paste
 
 MESSAGE_DUMP_CHAT = EVENT_LOGS
 
-kontol = app.get_me()
-
-BOT_USERNAME = kontol.username
 keywords_list = [
     "image",
     "wall",
@@ -98,7 +95,7 @@ async def alive_function(answers):
     buttons = InlineKeyboard(row_width=2)
     bot_state = "Dead" if not await app.get_me() else "Alive"
     buttons.add(
-        InlineKeyboardButton("Stats", callback_data="stats_callback"),
+        InlineKeyboardButton("Main bot", url=f"https://t.me/{BOT_USERNAME}"),
         InlineKeyboardButton(
             "Go Inline!", switch_inline_query_current_chat=""
         ),
