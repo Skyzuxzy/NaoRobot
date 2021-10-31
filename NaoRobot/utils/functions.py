@@ -7,13 +7,13 @@ from random import randint
 from re import findall
 from re import sub as re_sub
 from sys import executable
+import aiohttp
 
 import aiofiles
 import speedtest
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from pyrogram.types import Message
 from NaoRobot.utils.http import get, post
-from NaoRobot.arq import aiohttpsession
 
 
 async def restart(m: Message):
@@ -91,7 +91,7 @@ async def get_http_status_code(url: str) -> int:
 
 async def make_carbon(code):
     url = "https://carbonara.vercel.app/api/cook"
-    async with aiohttpsession.post(url, json={"code": code}) as resp:
+    async with aiohttp.aiohttpsession.post(url, json={"code": code}) as resp:
         image = BytesIO(await resp.read())
     image.name = "MizuharaSmexyBot_Carbon.png"
     return image
