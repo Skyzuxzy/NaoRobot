@@ -1,13 +1,12 @@
-from NaoRobot import telethn as tbot
-from NaoRobot.events import register
 import os
 import asyncio
-import os
 import time
 from datetime import datetime
 from NaoRobot import DEV_USERS
+from NaoRobot import telethn as tbot
+from NaoRobot.events import register
 from NaoRobot import TEMP_DOWNLOAD_DIRECTORY as path
-from datetime import datetime
+
 water = './NaoRobot/resources/nao.jpg'
 client = tbot
 
