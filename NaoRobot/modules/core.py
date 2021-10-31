@@ -5,16 +5,15 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from NaoRobot import OWNER_ID, DEV_USERS
+from NaoRobot import DEV_USERS
 from NaoRobot import TEMP_DOWNLOAD_DIRECTORY as path
-from NaoRobot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
 water = './NaoRobot/resources/nao.jpg'
 client = tbot
 
 @register(pattern=r"^/send ?(.*)")
 async def Prof(event):
-    if event.sender_id == OWNER_ID or event.sender_id == DEV_USERS:
+    if event.sender_id == DEV_USERS:
         pass
     else:
         return
@@ -46,7 +45,7 @@ from pathlib import Path
 async def install(event):
     if event.fwd_from:
         return
-    if event.sender_id == OWNER_ID or event.sender_id == DEV_USERS:
+    if event.sender_id == DEV_USERS:
         pass
     else:
         return
