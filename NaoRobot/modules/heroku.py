@@ -79,9 +79,7 @@ async def variable(var):
                 return await s.edit(">`/set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await s.edit(
-                f"**{variable}**  `successfully changed to`  ->  **{value}**"
-            )
+            await s.edit(f"**{variable}**  `successfully changed to`  ->  **{value}**")
         else:
             await s.edit(
                 f"**{variable}**  `successfully added with value`  ->  **{value}**"
@@ -112,7 +110,7 @@ async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
     """
-    die = await dyno.reply("**Processing...**")
+    die = await dyno.reply("`Processing...`")
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -127,9 +125,7 @@ async def dyno_usage(dyno):
     path = "/accounts/" + user_id + "/actions/get-quota"
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
-        return await die.edit(
-            "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
-        )
+        return await die.edit("`Error: something bad happened`\n\n" f">.`{r.reason}`\n")
     result = r.json()
     quota = result["account_quota"]
     quota_used = result["quota_used"]
@@ -157,13 +153,13 @@ async def dyno_usage(dyno):
     await asyncio.sleep(1.5)
 
     return await die.edit(
-        "**Dyno Usage**:\n\n"
-        f" -> `Dyno usage for`  **{HEROKU_APP_NAME}**:\n"
-        f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
+        "📊 **Dyno Usage **:\n\n"
+        f" » `Dyno usage for`  **{HEROKU_APP_NAME}**:\n"
+        f"      •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
-        " -> `Dyno hours quota remaining this month`:\n"
-        f"     •  `{hours}`**h**  `{minutes}`**m**  "
+        "  » `Dyno hours quota remaining this month`:\n"
+        f"      •  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  [`{percentage}`**%**]"
     )
 
@@ -191,7 +187,7 @@ async def _(dyno):
         dyno.chat_id,
         "logs.txt",
         reply_to=dyno.id,
-        caption="NaoRobot.",
+        caption="NaoRobot logs.",
     )
 
     await asyncio.sleep(5)
