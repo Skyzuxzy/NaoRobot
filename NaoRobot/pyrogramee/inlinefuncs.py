@@ -75,16 +75,8 @@ async def inline_help_func(__help__):
             input_message_content=InputTextMessageContent(
                 "__Click a button to get started__"
             ),
-            thumb_url="https://telegra.ph/file/bdfd456fc736d93a57de2.jpg",
+            thumb_url="https://telegra.ph/file/58c5cfd1ca49bba93fee2.jpg",
             reply_markup=buttons,
-        ),
-        InlineQueryResultArticle(
-            title="Our Network",
-            description="Devs.",
-            input_message_content=InputTextMessageContent(
-                "https://t.me/emikosupport"
-            ),
-            thumb_url="https://telegra.ph/file/bdfd456fc736d93a57de2.jpg",
         ),
     ]
     answerss = await alive_function(answerss)
