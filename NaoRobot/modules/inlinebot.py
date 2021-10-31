@@ -3,6 +3,9 @@ import traceback
 from NaoRobot import pbot as app
 from NaoRobot.pyrogramee.inlinefuncs import *
 
+__mod_name__ = "Inline"
+__help__ = """See inline for help related to inline"""
+
 
 @app.on_inline_query()
 async def inline_query_handler(client, query):
@@ -10,7 +13,7 @@ async def inline_query_handler(client, query):
         text = query.query.strip().lower()
         answers = []
         if text.strip() == "":
-            answerss = await inline_help_func(__help__)
+            answerss = await inline_help_func(__HELP__)
             await client.answer_inline_query(
                 query.id, results=answerss, cache_time=10
             )
@@ -103,9 +106,7 @@ async def inline_query_handler(client, query):
                 )
             tex = text.split(None, 1)[1].strip()
             answerss = await youtube_func(answers, tex)
-            await client.answer_inline_query(
-                query.id, results=answerss
-            )
+            await client.answer_inline_query(query.id, results=answerss)
 
         elif text.split()[0] == "lyrics":
             if len(text.split()) < 2:
@@ -117,9 +118,7 @@ async def inline_query_handler(client, query):
                 )
             tex = text.split(None, 1)[1].strip()
             answerss = await lyrics_func(answers, tex)
-            await client.answer_inline_query(
-                query.id, results=answerss
-            )
+            await client.answer_inline_query(query.id, results=answerss)
 
         elif text.split()[0] == "search":
             if len(text.split()) < 2:
