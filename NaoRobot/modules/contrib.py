@@ -17,4 +17,4 @@ async def give_repo(c, m):
 | Contributors |
 ----------------```
 {list_of_users}"""
-    await m.reply(text, disable_web_page_preview=False)
+    await m.reply(text, disable_web_page_preview=True)
