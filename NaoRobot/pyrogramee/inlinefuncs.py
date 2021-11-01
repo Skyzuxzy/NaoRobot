@@ -25,9 +25,9 @@ from NaoRobot import DEV_USERS
 from NaoRobot import EVENT_LOGS, BOT_USERNAME
 from NaoRobot import pbot as app 
 from NaoRobot import arq
-from NaoRobot.utils.keyboard import ikb
+from NaoRobot.utils.keyboard import Ikb
 from NaoRobot.pyrogramee.tasks import _get_tasks_text, all_tasks, rm_task
-from NaoRobot.pyrogramee.types.InlineQueryResult import InlineQueryResultCachedDocument
+from NaoRobot.pyrogramee.types import InlineQueryResultCachedDocument
 from NaoRobot.modules.info import get_chat_info, get_user_info
 from NaoRobot.modules.music import download_youtube_audio
 from NaoRobot.utils.functions import test_speedtest
