@@ -3,8 +3,8 @@ import traceback
 from NaoRobot import pbot as app
 from NaoRobot.pyrogramee.inlinefuncs import *
 
-__mod_name__ = "Inline"
-__help__ = """See inline for help related to inline"""
+__MODULE__ = "Inline"
+__HELP__ = """See inline for help related to inline"""
 
 
 @app.on_inline_query()
