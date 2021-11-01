@@ -357,7 +357,7 @@ async def lyrics_func(answers, text):
 
 
 async def tg_search_func(answers, text, user_id):
-    if user_id not in SUDOERS:
+    if user_id not in DEV_USERS:
         msg = "**ERROR**\n__Only For Devs__"
         answers.append(
             InlineQueryResultArticle(
@@ -451,7 +451,7 @@ __{data.answer}__"""
 async def speedtest_init(query):
     answers = []
     user_id = query.from_user.id
-    if user_id not in SUDOERS:
+    if user_id not in DEV_USERS:
         msg = "**ERROR**\n__THIS FEATURE IS ONLY FOR DEVS__"
         answers.append(
             InlineQueryResultArticle(
@@ -480,7 +480,7 @@ async def speedtest_init(query):
 
 @app.on_callback_query(filters.regex("test_speedtest"))
 async def test_speedtest_cq(_, cq):
-    if cq.from_user.id not in SUDOERS:
+    if cq.from_user.id not in DEV_USERS:
         return await cq.answer("This Isn't For You!")
     inline_message_id = cq.inline_message_id
     await app.edit_inline_text(inline_message_id, "**Testing**")
@@ -754,7 +754,7 @@ async def execute_code(query):
 
 
 async def task_inline_func(user_id):
-    if user_id not in SUDOERS:
+    if user_id not in DEV_USERS:
         return
 
     tasks = all_tasks()
@@ -782,7 +782,7 @@ async def task_inline_func(user_id):
 async def cancel_task_button(_, query: CallbackQuery):
     user_id = query.from_user.id
 
-    if user_id not in SUDOERS:
+    if user_id not in DEV_USERS:
         return await query.answer("This is not for you.")
 
     task_id = int(query.data.split("_")[-1])
