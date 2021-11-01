@@ -60,7 +60,7 @@ keywords_list = [
 ]
 
 
-async def inline_help_func(__help__):
+async def inline_help_func(__HELP__):
     buttons = InlineKeyboard(row_width=4)
     buttons.add(
         *[
