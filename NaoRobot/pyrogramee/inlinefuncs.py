@@ -15,14 +15,18 @@ from pykeyboard import InlineKeyboard
 from pyrogram import __version__ as pyrover
 from pyrogram import filters
 from pyrogram.raw.functions import Ping
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+from pyrogram.types import (CallbackQuery, 
+                            InlineKeyboardButton,
                             InlineQueryResultArticle,
                             InlineQueryResultPhoto,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from NaoRobot import DEV_USERS
-from NaoRobot import EVENT_LOGS, BOT_USERNAME
+from NaoRobot import (
+    DEV_USERS,
+    EVENT_LOGS, 
+    BOT_USERNAME,
+)
 from NaoRobot import pbot as app 
 from NaoRobot import arq
 from NaoRobot.utils.keyboard import Ikb
