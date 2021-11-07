@@ -77,7 +77,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 [✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴇʟʟᴏ  ᴍʏ ɴᴀᴍᴇ ɪs ɴᴀᴏ ᴛᴏᴍᴏʀɪ
 ɪ'ᴍ ᴀ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇ ʙᴏᴛ ꜰᴏʀ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsɪʟʏ!
-ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ [sᴋʏᴢᴜᴇx​](https://t.me/skyzuex) 
+ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ [Skyzu​](https://t.me/skyzuex) 
 """
 
 buttons = [
@@ -373,9 +373,9 @@ def nao_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Source", url="https://github.com/Askarbot/NaoRobot"
+                    InlineKeyboardButton(text="Source", url="https://github.com/Skyzu/NaoRobot"
                     ),
-                    InlineKeyboardButton(text="Dev", url="https://t.mr/skyzuX")
+                    InlineKeyboardButton(text="Dev", url="https://t.me/skyzuex")
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
@@ -399,7 +399,7 @@ def Source_about_callback(update, context):
     if query.data == "source_":
         query.message.edit_text(
             text=""" Hi I'm *NaoRobot*
-                 \nHere is the [Source Code](https://github.com/KennedyProject/NaoRobot) .""",
+                 \nHere is the [Source Code](https://github.com/Skyzu/NaoRobot) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
