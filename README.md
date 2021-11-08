@@ -34,7 +34,6 @@ CREDITS
 ❤️ DaisyX = Inuka
 ❤️ TheHamkerCat = WBB
 
-Developed By
-[KennedyProject](https://t.me/excrybaby)
-[SkyzuProject](https://t.me/skyzuex)
-```
+Developed By :
+KennedyProject
+SkyzuProject
