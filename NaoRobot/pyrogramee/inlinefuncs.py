@@ -41,6 +41,7 @@ MESSAGE_DUMP_CHAT = EVENT_LOGS
 
 keywords_list = [
     "image",
+    "alive",
     "wall",
     "tmdb",
     "lyrics",
