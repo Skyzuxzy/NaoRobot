@@ -439,7 +439,7 @@ def kang(update: Update, context: CallbackContext):
                  ]
               ]
           )
-        packs = "Please reply to a sticker, or image to kang it!\nOh, by the way. here are your packs:\n"
+        packs = "Please reply to a sticker, or image to kang it!\n, by the way. here are your packs:\n"
         if packnum > 0:
             firstpackname = "a" + str(user.id) + "_by_" + context.bot.username
             for i in range(0, packnum + 1):
