@@ -22,7 +22,6 @@ Now send the bot /start, If it doesn't respond go to https://dashboard.heroku.co
 ```
 
 ## <p align="center">DEPLOY TO HEROKU</p>
-
 <p align="center"><a href="https://heroku.com/deploy?template=https://github.com/Skyzu/NaoRobot.git">
   <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-aqua?style=flat&logo=heroku" width="325" height="50.100" /></a></p>
 
@@ -33,5 +32,9 @@ CREDITS
 ❤️ MashaRobot = Dark Prince 
 ❤️ DaisyX = Inuka
 ❤️ TheHamkerCat = WBB
+```
 
-Developed By KennedyProject !
+
+**DEVELOPED BY**
+* [Sena-ex](https://github.com/KennedyProject)  KennedyProject
+* [Skyzu](https://github.com/Skyzu)  SkyzuProject
