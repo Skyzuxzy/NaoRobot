@@ -77,7 +77,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 [✨](https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg) ʜᴇʟʟᴏ  ᴍʏ ɴᴀᴍᴇ ɪs ɴᴀᴏ ᴛᴏᴍᴏʀɪ
 ɪ'ᴍ ᴀ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇ ʙᴏᴛ ꜰᴏʀ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsɪʟʏ!
-ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ [Skyzu​](https://t.me/skyzuex) 
+ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ [Skyzu​](https://t.me/skyzu) 
 """
 
 buttons = [
@@ -375,7 +375,7 @@ def nao_about_callback(update, context):
                  [
                     InlineKeyboardButton(text="Source", url="https://github.com/Skyzu/NaoRobot"
                     ),
-                    InlineKeyboardButton(text="Dev", url="https://t.me/skyzuex")
+                    InlineKeyboardButton(text="Dev", url="https://t.me/skyzu")
                  ],
                  [
                     InlineKeyboardButton(text="🔙 Back", callback_data="nao_back")
