@@ -103,7 +103,7 @@ HELP_STRINGS = """
 nao_IMG = "https://telegra.ph/file/9c6e5b30022565cbe9f4a.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @skyzuX \
+ You can support the project by contacting @skyzu \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
