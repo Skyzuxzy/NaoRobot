@@ -36,5 +36,5 @@ CREDITS
 
 
 **DEVELOPED BY**
-* [Sena-ex](https://github.com/KennedyProject)  KennedyProject
-* [Skyzu](https://github.com/Skyzu)  SkyzuProject
+* [Sena-ex](https://github.com/kennedy-ex) - Kennedy-Ex
+* [Skyzu](https://github.com/Skyzu) - SkyzuProject
